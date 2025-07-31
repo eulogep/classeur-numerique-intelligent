@@ -1,0 +1,21 @@
+{
+  "name": "classeur-numerique-intelligent",
+  "version": "1.0.0",
+  "description": "Application web pour organiser et classer automatiquement vos documents",
+  "private": true,
+  "scripts": {
+    "start": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "test": "cd frontend && npm test",
+    "eject": "cd frontend && npm run eject",
+    "install:all": "npm install && cd frontend && npm install"
+  },
+  "keywords": [
+    "react",
+    "supabase",
+    "document-management",
+    "file-organization"
+  ],
+  "author": "Classeur Numérique",
+  "license": "MIT"
+} 

@@ -1,0 +1,19 @@
+directories:
+  output: dist
+  buildResources: build
+appId: com.classernumerique.desktop
+productName: Classeur Numérique
+files:
+  - filter:
+      - electron/**/*
+      - frontend/build/**/*
+      - node_modules/**/*
+mac:
+  category: public.app-category.productivity
+win:
+  target: nsis
+  icon: assets/icon.ico
+linux:
+  target: AppImage
+  category: Utility
+electronVersion: 28.3.3

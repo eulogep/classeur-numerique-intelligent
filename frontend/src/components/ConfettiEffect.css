@@ -1,0 +1,145 @@
+/* Styles pour les effets de confetti */
+
+.confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  border-radius: 2px;
+  animation: confettiFall 3s ease-in-out forwards;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  75% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Variantes de confetti */
+.confetti-piece:nth-child(3n) {
+  border-radius: 50%;
+  animation: confettiFall 2.5s ease-in-out forwards;
+}
+
+.confetti-piece:nth-child(3n+1) {
+  border-radius: 0;
+  animation: confettiFall 3.5s ease-in-out forwards;
+}
+
+.confetti-piece:nth-child(3n+2) {
+  border-radius: 50% 0 50% 0;
+  animation: confettiFall 2.8s ease-in-out forwards;
+}
+
+/* Effet de rebond pour certaines pièces */
+.confetti-piece:nth-child(5n) {
+  animation: confettiBounce 3s ease-in-out forwards;
+}
+
+@keyframes confettiBounce {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(25vh) rotate(180deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(50vh) rotate(360deg);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(75vh) rotate(540deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Effet de spirale pour certaines pièces */
+.confetti-piece:nth-child(7n) {
+  animation: confettiSpiral 4s ease-in-out forwards;
+}
+
+@keyframes confettiSpiral {
+  0% {
+    transform: translateY(-100px) translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(25vh) translateX(50px) rotate(90deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(50vh) translateX(-30px) rotate(180deg);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(75vh) translateX(20px) rotate(270deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(100vh) translateX(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .confetti-container {
+    display: none; /* Désactiver sur mobile pour les performances */
+  }
+}
+
+/* Animation de fade-in pour les pièces */
+.confetti-piece {
+  animation-fill-mode: both;
+}
+
+/* Effet de glow pour certaines pièces */
+.confetti-piece:nth-child(11n) {
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+  animation: confettiGlow 3s ease-in-out forwards;
+}
+
+@keyframes confettiGlow {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.6);
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+  }
+} 

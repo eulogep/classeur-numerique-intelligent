@@ -1,0 +1,399 @@
+/* Styles spécifiques pour les cartes dynamiques */
+
+.dynamic-cards-wrapper {
+  position: relative;
+  min-height: 400px;
+}
+
+/* État vide */
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-2xl);
+  background: var(--background-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  margin: var(--spacing-xl);
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: var(--spacing-lg);
+  opacity: 0.6;
+}
+
+.empty-state h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.empty-state p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Animations supplémentaires pour les cartes */
+.dynamic-card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all var(--animation-duration) var(--animation-ease);
+}
+
+/* Effet de particules au survol */
+.dynamic-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, var(--card-glow) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+
+.dynamic-card:hover::before {
+  width: 200px;
+  height: 200px;
+}
+
+/* Effet de rotation 3D subtil */
+.dynamic-card:hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(2deg) translateY(-8px) scale(1.02);
+}
+
+/* Animation de pulsation pour les icônes */
+.card-icon {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-icon::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.dynamic-card:hover .card-icon::after {
+  left: 100%;
+}
+
+/* Effet de profondeur pour les actions */
+.card-actions {
+  position: relative;
+  z-index: 3;
+}
+
+.card-action-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-action-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.3s ease;
+}
+
+.card-action-btn:hover::before {
+  left: 100%;
+}
+
+/* Animation de chargement des cartes */
+@keyframes cardStagger {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.dynamic-card:nth-child(1) { animation-delay: 0.1s; }
+.dynamic-card:nth-child(2) { animation-delay: 0.2s; }
+.dynamic-card:nth-child(3) { animation-delay: 0.3s; }
+.dynamic-card:nth-child(4) { animation-delay: 0.4s; }
+.dynamic-card:nth-child(5) { animation-delay: 0.5s; }
+.dynamic-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Effet de focus pour l'accessibilité */
+.dynamic-card:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Animation de fermeture */
+.dynamic-card.closing {
+  animation: cardClose 0.3s var(--animation-ease) forwards;
+}
+
+@keyframes cardClose {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8) translateY(20px);
+    opacity: 0;
+  }
+}
+
+/* Effet de sélection */
+.dynamic-card.selected {
+  border-color: var(--primary-color);
+  box-shadow: 
+    0 0 0 2px rgba(102, 126, 234, 0.2),
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 0 20px var(--card-glow);
+}
+
+/* Animation de notification */
+.dynamic-card.notification {
+  animation: cardNotification 0.6s ease-in-out;
+}
+
+@keyframes cardNotification {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Effet de glitch pour les cartes spéciales */
+.dynamic-card.special::before {
+  animation: glitch 0.3s ease-in-out infinite;
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+/* Responsive pour les cartes */
+@media (max-width: 768px) {
+  .dynamic-cards-container {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+  }
+
+  .dynamic-card {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .card-actions {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .card-action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Animation de transition entre les modes */
+.dynamic-cards-container {
+  transition: all 0.5s var(--animation-ease);
+}
+
+.dynamic-cards-container.folders-mode {
+  transform: translateX(0);
+}
+
+.dynamic-cards-container.documents-mode {
+  transform: translateX(0);
+}
+
+/* Effet de parallaxe subtil */
+.dynamic-card {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.dynamic-card:hover {
+  transform: translateZ(10px);
+}
+
+/* Animation de chargement progressif */
+.dynamic-cards-container.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.dynamic-cards-container.loading .dynamic-card {
+  animation: loadingPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loadingPulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* Effet de hover avancé */
+.dynamic-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.dynamic-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(102, 126, 234, 0.05) 0%, 
+    rgba(124, 58, 237, 0.05) 50%, 
+    rgba(6, 182, 212, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.dynamic-card:hover::after {
+  opacity: 1;
+}
+
+/* Animation de texte */
+.card-title {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  transition: width 0.3s ease;
+}
+
+.dynamic-card:hover .card-title::after {
+  width: 100%;
+}
+
+/* Effet de profondeur pour les descriptions */
+.card-description {
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.dynamic-card:hover .card-description {
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+/* Animation de rotation pour les icônes spéciales */
+.card-icon.special {
+  animation: iconRotate 3s ease-in-out infinite;
+}
+
+@keyframes iconRotate {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+/* Effet de particules flottantes */
+.particle-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particleFloat 3s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(-20px) translateX(10px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) translateX(20px);
+  }
+}
+
+/* Animation de focus pour les boutons d'action */
+.card-action-btn:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  transform: translateY(-1px);
+}
+
+/* Effet de ripple pour les boutons */
+.card-action-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-action-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+
+.card-action-btn:active::after {
+  width: 200px;
+  height: 200px;
+}
+
+/* Animation de transition pour les changements de contenu */
+.dynamic-card {
+  transition: all var(--animation-duration) var(--animation-ease);
+}
+
+.dynamic-card.content-changing {
+  animation: contentChange 0.5s ease-in-out;
+}
+
+@keyframes contentChange {
+  0% { opacity: 0.8; transform: scale(0.98); }
+  100% { opacity: 1; transform: scale(1); }
+} 
