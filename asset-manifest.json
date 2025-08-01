@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/classeur-numerique-intelligent/static/css/main.5127b6aa.css",
+    "main.js": "/classeur-numerique-intelligent/static/js/main.6e76ac0a.js",
+    "static/js/488.0bb960fd.chunk.js": "/classeur-numerique-intelligent/static/js/488.0bb960fd.chunk.js",
+    "index.html": "/classeur-numerique-intelligent/index.html",
+    "main.5127b6aa.css.map": "/classeur-numerique-intelligent/static/css/main.5127b6aa.css.map",
+    "main.6e76ac0a.js.map": "/classeur-numerique-intelligent/static/js/main.6e76ac0a.js.map",
+    "488.0bb960fd.chunk.js.map": "/classeur-numerique-intelligent/static/js/488.0bb960fd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5127b6aa.css",
+    "static/js/main.6e76ac0a.js"
+  ]
+}
