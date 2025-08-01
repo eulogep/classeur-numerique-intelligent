@@ -1,315 +1,221 @@
-# 📁 Classeur Numérique Intelligent
+# 📚 Classeur Numérique Intelligent
 
-Une application moderne de gestion de documents avec interface utilisateur intuitive et authentification sécurisée.
+Un système complet de gestion documentaire intelligent qui combine organisation locale et cloud pour une expérience utilisateur optimale.
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![React](https://img.shields.io/badge/React-18.0+-61dafb)
-![Supabase](https://img.shields.io/badge/Supabase-Latest-3ecf8e)
-![License](https://img.shields.io/badge/license-MIT-green)
+## 🎯 Vue d'ensemble
 
-## 🚀 Fonctionnalités
+Le **Classeur Numérique Intelligent** est une application moderne qui permet d'organiser, classifier et gérer vos documents de manière intelligente. Le projet supporte à la fois une utilisation locale (via Electron) et cloud (via Supabase), offrant une flexibilité maximale selon vos besoins.
 
-### ✨ Interface Moderne
-- **Design Glassmorphism** : Interface élégante avec effets de transparence
-- **Responsive Design** : Optimisé pour tous les appareils
-- **Animations fluides** : Transitions et micro-interactions
-- **Thème adaptatif** : Support des modes clair/sombre
+## 🚀 Fonctionnalités principales
 
-### 📂 Gestion de Documents
-- **Arborescence hiérarchique** : Organisation en dossiers et sous-dossiers
-- **Navigation intuitive** : Parcours facile de la structure
-- **Actions rapides** : Création, modification, suppression
-- **Recherche globale** : Trouvez rapidement vos documents
+### 📁 Gestion documentaire
+- **Import intelligent** : Import de fichiers individuels ou de dossiers entiers
+- **Classification automatique** : OCR et classification basée sur le contenu
+- **Organisation hiérarchique** : Structure de dossiers personnalisable
+- **Recherche avancée** : Recherche par contenu, métadonnées et tags
 
-### 🔐 Sécurité
-- **Authentification Supabase** : Connexion sécurisée
-- **Gestion des sessions** : Connexion persistante
-- **Protection des données** : Accès contrôlé aux documents
+### 🎨 Interface moderne
+- **Design responsive** : Interface adaptée à tous les écrans
+- **Thèmes personnalisables** : Plusieurs thèmes visuels disponibles
+- **Navigation intuitive** : Arborescence de dossiers et galerie de documents
+- **Prévisualisation** : Aperçu des documents sans téléchargement
 
-### 📊 Statistiques
-- **Vue d'ensemble** : Statistiques en temps réel
-- **Métriques détaillées** : Nombre de dossiers, documents, taille
-- **Graphiques interactifs** : Visualisation des données
+### 🔐 Sécurité et stockage
+- **Authentification** : Système de connexion sécurisé
+- **Stockage hybride** : Local (Electron) et cloud (Supabase)
+- **Chiffrement** : Protection des données sensibles
+- **Sauvegarde** : Système de sauvegarde automatique
 
-## 🛠️ Technologies Utilisées
+### 📊 Fonctionnalités avancées
+- **Analytics** : Statistiques d'utilisation et d'organisation
+- **To-do list intégrée** : Gestion des tâches liées aux documents
+- **Raccourcis clavier** : Navigation rapide et efficace
+- **Notifications** : Système de notifications en temps réel
 
-### Frontend
-- **React 18** : Framework JavaScript moderne
-- **CSS3** : Styles personnalisés avec variables CSS
-- **Glassmorphism** : Effets de transparence et flou
-- **Responsive Design** : Mobile-first approach
+## 🏗️ Architecture
 
-### Backend & Base de Données
-- **Supabase** : Backend-as-a-Service
-- **PostgreSQL** : Base de données relationnelle
-- **Row Level Security** : Sécurité au niveau des données
+Le projet suit une architecture modulaire avec :
 
-### Outils de Développement
-- **npm** : Gestionnaire de paquets
-- **Git** : Contrôle de version
-- **ESLint** : Linting du code
+- **Frontend** : React.js avec interface moderne
+- **Backend** : Node.js + Express.js (pour la version cloud)
+- **OCR** : Tesseract.js pour l'extraction de texte
+- **Stockage** : Supabase (cloud) + système de fichiers local (Electron)
+- **Base de données** : PostgreSQL via Supabase
 
-## 📋 Prérequis
+## 📦 Installation
 
-- **Node.js** (version 16 ou supérieure)
-- **npm** ou **yarn**
-- **Compte Supabase** (gratuit)
+### Prérequis
+- Node.js (version 16 ou supérieure)
+- npm ou yarn
+- Git
 
-## 🚀 Installation
-
-### 1. Cloner le Repository
-
+### Installation complète
 ```bash
-git clone https://github.com/votre-username/classeur-numerique-intelligent.git
+# Cloner le repository
+git clone [URL_DU_REPO]
 cd classeur-numerique-intelligent
-```
 
-### 2. Installer les Dépendances
+# Installer toutes les dépendances
+npm run install:all
 
-```bash
-# Installation des dépendances principales
-npm install
-
-# Installation des dépendances frontend
-cd frontend
-npm install
-```
-
-### 3. Configuration Supabase
-
-1. **Créer un projet Supabase** :
-   - Allez sur [supabase.com](https://supabase.com)
-   - Créez un nouveau projet
-   - Notez votre URL et clé API
-
-2. **Configurer les variables d'environnement** :
-   ```bash
-   # Dans le dossier frontend, créez un fichier .env
-   REACT_APP_SUPABASE_URL=votre_url_supabase
-   REACT_APP_SUPABASE_ANON_KEY=votre_cle_anonyme
-   ```
-
-3. **Exécuter le script SQL** :
-   - Ouvrez le fichier `SUPABASE_SETUP.sql`
-   - Exécutez le script dans l'éditeur SQL de Supabase
-
-### 4. Lancer l'Application
-
-```bash
-# Depuis le dossier frontend
+# Démarrer l'application
 npm start
 ```
 
-L'application sera accessible à l'adresse : `http://localhost:3000`
+### Installation rapide (frontend uniquement)
+```bash
+cd frontend
+npm install
+npm start
+```
 
-## 📁 Structure du Projet
+## 🔧 Configuration
+
+### Configuration Supabase (optionnel)
+1. Créez un projet Supabase
+2. Exécutez le script SQL dans `SUPABASE_SETUP.sql`
+3. Configurez les variables d'environnement dans `frontend/.env`
+
+### Configuration Electron (optionnel)
+```bash
+# Pour créer l'application desktop
+cd frontend
+npm run electron
+```
+
+## 📁 Structure du projet
 
 ```
 classeur-numerique-intelligent/
-├── frontend/                 # Application React
-│   ├── public/              # Fichiers publics
-│   ├── src/                 # Code source
-│   │   ├── components/      # Composants React
-│   │   ├── contexts/        # Contextes React
-│   │   ├── hooks/           # Hooks personnalisés
-│   │   ├── utils/           # Utilitaires
-│   │   └── App.js           # Composant principal
-│   ├── package.json         # Dépendances frontend
-│   └── README.md           # Documentation frontend
-├── SUPABASE_SETUP.sql      # Script de configuration BDD
-├── ARCHITECTURE.md         # Documentation architecture
-├── WIREFRAMES.md           # Maquettes et wireframes
-├── package.json            # Dépendances principales
-└── README.md              # Ce fichier
+├── 📁 frontend/                 # Application React principale
+│   ├── 📁 src/
+│   │   ├── 📁 components/      # Composants React
+│   │   ├── 📁 contexts/        # Contextes React
+│   │   ├── 📁 utils/           # Utilitaires
+│   │   └── 📁 lib/             # Bibliothèques
+│   ├── 📁 public/              # Assets statiques
+│   └── package.json
+├── 📁 dist/                     # Build de production
+├── 📁 node_modules/             # Dépendances racine
+├── package.json                 # Configuration racine
+├── ARCHITECTURE.md              # Documentation technique
+├── SUPABASE_SETUP.sql           # Script de configuration DB
+└── WIREFRAMES.md                # Maquettes UI
 ```
 
-## 🎯 Utilisation
+## 🎓 Cas d'usage
 
-### 🔐 Connexion
-1. Ouvrez l'application dans votre navigateur
-2. Cliquez sur "Se connecter" dans le header
-3. Entrez vos identifiants Supabase
-4. Vous êtes maintenant connecté !
+### Pour les étudiants
+- **Organisation par année** : Prépa, Première, Terminale, ESIEA, SIA
+- **Spécialisation Data** : Dossiers dédiés à la data science
+- **Documents administratifs** : Gestion des certificats et notes
 
-### 📂 Gestion des Dossiers
-1. **Créer un dossier** :
-   - Cliquez sur le bouton "+" dans la sidebar
-   - Entrez le nom du dossier
-   - Choisissez le dossier parent (optionnel)
+### Pour les professionnels
+- **Gestion de projet** : Organisation par client/projet
+- **Archivage intelligent** : Classification automatique des documents
+- **Collaboration** : Partage et synchronisation cloud
 
-2. **Naviguer** :
-   - Cliquez sur un dossier pour l'ouvrir
-   - Utilisez la hiérarchie pour naviguer
-   - Les sous-dossiers s'affichent automatiquement
+## 🛠️ Technologies utilisées
 
-3. **Modifier/Supprimer** :
-   - Survolez un dossier pour voir les actions
-   - Cliquez sur l'icône d'édition ou de suppression
-   - Confirmez l'action
+### Frontend
+- **React 18** : Interface utilisateur
+- **CSS moderne** : Styling et animations
+- **Material UI / shadcn/ui** : Composants UI
+- **Electron** : Application desktop
 
-### 🔍 Recherche
-- Utilisez la barre de recherche globale
-- Filtrez par nom, type ou date
-- Résultats en temps réel
+### Backend
+- **Node.js** : Runtime JavaScript
+- **Express.js** : Framework web
+- **Supabase** : Backend-as-a-Service
+- **PostgreSQL** : Base de données
 
-## 🎨 Personnalisation
+### Outils
+- **Tesseract.js** : OCR (Reconnaissance optique de caractères)
+- **JWT** : Authentification
+- **WebRTC** : Communication temps réel
 
-### Couleurs et Thème
-Les couleurs sont définies dans `frontend/src/App.css` :
+## 📝 Formats supportés
 
-```css
-:root {
-  --primary-color: #A78BFA;    /* Violet pastel */
-  --secondary-color: #93C5FD;  /* Bleu clair pastel */
-  --accent-color: #F472B6;     /* Rose pastel */
-  /* ... autres variables */
-}
-```
+- **Documents** : PDF, DOC, DOCX, TXT, RTF
+- **Images** : JPG, JPEG, PNG, GIF, BMP, TIFF
+- **Vidéos** : MP4, AVI, MOV, WMV
+- **Audio** : MP3, WAV, FLAC, AAC
+- **Archives** : ZIP, RAR, 7Z, TAR
+- **Présentations** : PPT, PPTX, KEY
 
-### Styles Responsifs
-L'application s'adapte automatiquement aux différentes tailles d'écran :
-- **Desktop** : Interface complète avec sidebar
-- **Tablet** : Layout adaptatif
-- **Mobile** : Interface optimisée tactile
+## 🚀 Déploiement
 
-## 🔧 Développement
+### GitHub Pages (Recommandé)
 
-### Scripts Disponibles
+L'application est configurée pour un déploiement automatique sur GitHub Pages.
 
+**🌐 Application en ligne** : [https://euloge-mabiala.github.io/classeur-numerique-intelligent](https://euloge-mabiala.github.io/classeur-numerique-intelligent)
+
+#### Déploiement automatique
 ```bash
-# Démarrer en mode développement
-npm start
-
-# Construire pour la production
-npm run build
-
-# Tester l'application
-npm test
-
-# Linter le code
-npm run lint
+# Le déploiement se fait automatiquement à chaque push
+git push origin main
 ```
 
-### Architecture
-
-L'application suit une architecture modulaire :
-
-- **Components** : Composants réutilisables
-- **Contexts** : Gestion d'état globale
-- **Hooks** : Logique métier réutilisable
-- **Utils** : Fonctions utilitaires
-
-### Ajout de Fonctionnalités
-
-1. **Nouveau composant** :
-   ```bash
-   # Créez un fichier dans src/components/
-   touch src/components/MonComposant.js
-   ```
-
-2. **Nouveau contexte** :
-   ```bash
-   # Créez un fichier dans src/contexts/
-   touch src/contexts/MonContexte.js
-   ```
-
-## 🐛 Dépannage
-
-### Problèmes Courants
-
-**L'application ne démarre pas** :
+#### Déploiement manuel
 ```bash
-# Vérifiez les dépendances
-npm install
+# Depuis la racine du projet
+npm run deploy
 
-# Vérifiez les variables d'environnement
-cat .env
+# Ou depuis le dossier frontend
+cd frontend && npm run deploy
 ```
 
-**Erreur de connexion Supabase** :
-- Vérifiez vos clés API dans `.env`
-- Assurez-vous que le projet Supabase est actif
-- Vérifiez les règles RLS dans Supabase
+#### Configuration requise
+1. Activez GitHub Pages dans les paramètres du repository
+2. Source : "Deploy from a branch"
+3. Branch : `gh-pages`
 
-**Problèmes de style** :
-- Videz le cache du navigateur
-- Redémarrez le serveur de développement
+### Autres méthodes de déploiement
 
-### Logs et Debug
-
+#### Production locale
 ```bash
-# Activer les logs détaillés
-DEBUG=* npm start
-
-# Vérifier les erreurs de build
 npm run build
 ```
 
-## 📈 Performance
-
-### Optimisations Implémentées
-- **Lazy Loading** : Chargement à la demande
-- **Memoization** : Cache des composants
-- **Code Splitting** : Division du bundle
-- **Image Optimization** : Compression automatique
-
-### Métriques
-- **First Contentful Paint** : < 1.5s
-- **Largest Contentful Paint** : < 2.5s
-- **Cumulative Layout Shift** : < 0.1
+#### Electron (Desktop)
+```bash
+cd frontend
+npm run electron
+```
 
 ## 🤝 Contribution
 
-### Comment Contribuer
+1. Fork le projet
+2. Créez une branche pour votre fonctionnalité
+3. Committez vos changements
+4. Poussez vers la branche
+5. Ouvrez une Pull Request
 
-1. **Fork** le projet
-2. **Créez** une branche feature (`git checkout -b feature/AmazingFeature`)
-3. **Commitez** vos changements (`git commit -m 'Add AmazingFeature'`)
-4. **Push** vers la branche (`git push origin feature/AmazingFeature`)
-5. **Ouvrez** une Pull Request
+## 👨‍💻 Auteur
 
-### Standards de Code
+**EULOGE JUNIOR MABIALA**
 
-- **ESLint** : Respectez les règles de linting
-- **Prettier** : Formatage automatique
-- **Conventions** : Suivez les conventions React
-- **Tests** : Ajoutez des tests pour les nouvelles fonctionnalités
+Développeur passionné par l'organisation documentaire et les technologies modernes. Ce projet est le fruit de nombreuses heures de développement et de réflexion sur l'optimisation de la gestion documentaire.
 
 ## 📄 Licence
 
 Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
-## 👥 Équipe
-
-- **Développeur Principal** : [Votre Nom]
-- **Design** : Interface moderne et intuitive
-- **Architecture** : Scalable et maintenable
-
 ## 📞 Support
 
-- **Issues** : [GitHub Issues](https://github.com/votre-username/classeur-numerique-intelligent/issues)
-- **Documentation** : Ce README et les fichiers dans `/docs`
-- **Email** : [votre-email@example.com]
+- **Documentation** : Consultez les fichiers `.md` dans le projet
+- **Issues** : Utilisez les issues GitHub pour signaler des bugs
+- **Discussions** : Forum GitHub pour les questions générales
 
-## 🗺️ Roadmap
+## 🔄 Roadmap
 
-### Version 1.1
-- [ ] Upload de fichiers
-- [ ] Prévisualisation de documents
-- [ ] Partage de dossiers
-
-### Version 1.2
-- [ ] Synchronisation cloud
-- [ ] Versioning des documents
-- [ ] API REST complète
-
-### Version 2.0
-- [ ] Intelligence artificielle
-- [ ] Reconnaissance de texte
-- [ ] Suggestions automatiques
+- [ ] Intégration IA pour classification avancée
+- [ ] Synchronisation multi-appareils
+- [ ] API publique pour intégrations
+- [ ] Mode hors-ligne amélioré
+- [ ] Support de plus de formats de fichiers
 
 ---
 
-**⭐ N'oubliez pas de donner une étoile au projet si vous l'aimez !**
-
-*Développé avec ❤️ pour une gestion de documents moderne et intuitive.* 
+**Développé avec ❤️ par EULOGE JUNIOR MABIALA pour une organisation documentaire intelligente** 

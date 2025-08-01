@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "Application web pour organiser et classer automatiquement vos documents",
   "private": true,
+  "homepage": "https://euloge-mabiala.github.io/classeur-numerique-intelligent",
   "scripts": {
     "start": "cd frontend && npm start",
     "build": "cd frontend && npm run build",
     "test": "cd frontend && npm test",
     "eject": "cd frontend && npm run eject",
-    "install:all": "npm install && cd frontend && npm install"
+    "install:all": "npm install && cd frontend && npm install",
+    "predeploy": "cd frontend && npm run build",
+    "deploy": "cd frontend && npm run deploy"
   },
   "keywords": [
     "react",
