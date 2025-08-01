@@ -1,3 +1,11 @@
+/**
+ * Classeur Numérique Intelligent - Application principale
+ * 
+ * @author EULOGE JUNIOR MABIALA
+ * @version 1.0.0
+ * @description Application React pour la gestion documentaire intelligente
+ */
+
 import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
 

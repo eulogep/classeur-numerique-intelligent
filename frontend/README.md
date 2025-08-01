@@ -101,4 +101,4 @@ Ce classeur est spécialement conçu pour :
 
 ---
 
-**Développé avec ❤️ pour les étudiants en ingénierie** 
+**Développé avec ❤️ par EULOGE JUNIOR MABIALA pour les étudiants en ingénierie** 

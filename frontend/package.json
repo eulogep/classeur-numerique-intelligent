@@ -2,6 +2,8 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "author": "EULOGE JUNIOR MABIALA",
+  "description": "Frontend React pour le Classeur Numérique Intelligent",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

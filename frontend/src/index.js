@@ -1,3 +1,11 @@
+/**
+ * Classeur Numérique Intelligent - Point d'entrée de l'application
+ * 
+ * @author EULOGE JUNIOR MABIALA
+ * @version 1.0.0
+ * @description Point d'entrée principal de l'application React
+ */
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
