@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './SearchBar.css';
 
 const SearchBar = ({ onSearch, onClear, documents = [], folders = {} }) => {
@@ -23,39 +23,7 @@ const SearchBar = ({ onSearch, onClear, documents = [], folders = {} }) => {
     localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
   }, [searchHistory]);
 
-  // Gérer les suggestions de recherche
-  useEffect(() => {
-    if (searchTerm.length > 0) {
-      const newSuggestions = generateSuggestions(searchTerm);
-      setSuggestions(newSuggestions);
-      setShowSuggestions(true);
-    } else {
-      setSuggestions([]);
-      setShowSuggestions(false);
-    }
-  }, [searchTerm, documents, folders]);
-
-  // Gérer les raccourcis clavier
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.ctrlKey && e.key === 'k') {
-        e.preventDefault();
-        searchInputRef.current?.focus();
-        setIsExpanded(true);
-      }
-      
-      if (e.key === 'Escape') {
-        setIsExpanded(false);
-        setShowSuggestions(false);
-        searchInputRef.current?.blur();
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
-  const generateSuggestions = (term) => {
+  const generateSuggestions = useCallback((term) => {
     const suggestions = [];
     const lowerTerm = term.toLowerCase();
 
@@ -116,7 +84,39 @@ const SearchBar = ({ onSearch, onClear, documents = [], folders = {} }) => {
     });
 
     return suggestions.slice(0, 8); // Limiter à 8 suggestions
-  };
+  }, [documents, folders, searchHistory]);
+
+  // Gérer les suggestions de recherche
+  useEffect(() => {
+    if (searchTerm.length > 0) {
+      const newSuggestions = generateSuggestions(searchTerm);
+      setSuggestions(newSuggestions);
+      setShowSuggestions(true);
+    } else {
+      setSuggestions([]);
+      setShowSuggestions(false);
+    }
+  }, [searchTerm, generateSuggestions]);
+
+  // Gérer les raccourcis clavier
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.ctrlKey && e.key === 'k') {
+        e.preventDefault();
+        searchInputRef.current?.focus();
+        setIsExpanded(true);
+      }
+      
+      if (e.key === 'Escape') {
+        setIsExpanded(false);
+        setShowSuggestions(false);
+        searchInputRef.current?.blur();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const getFileTypeIcon = (mimeType) => {
     if (mimeType.includes('pdf')) return '📄';

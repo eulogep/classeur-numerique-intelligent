@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './GlobalSearch.css';
 
 const GlobalSearch = ({ documents = [], folders = {}, onItemSelect }) => {
@@ -80,17 +80,7 @@ const GlobalSearch = ({ documents = [], folders = {}, onItemSelect }) => {
     setSelectedResult(-1);
   };
 
-  // Effectuer la recherche
-  useEffect(() => {
-    if (searchTerm.trim()) {
-      const searchResults = performSearch(searchTerm);
-      setResults(searchResults);
-    } else {
-      setResults([]);
-    }
-  }, [searchTerm, documents, folders]);
-
-  const performSearch = (term) => {
+  const performSearch = useCallback((term) => {
     const lowerTerm = term.toLowerCase();
     const results = [];
 
@@ -159,7 +149,17 @@ const GlobalSearch = ({ documents = [], folders = {}, onItemSelect }) => {
 
     // Trier par pertinence
     return results.sort((a, b) => b.relevance - a.relevance).slice(0, 10);
-  };
+  }, [documents, folders, searchHistory]);
+
+  // Effectuer la recherche
+  useEffect(() => {
+    if (searchTerm.trim()) {
+      const searchResults = performSearch(searchTerm);
+      setResults(searchResults);
+    } else {
+      setResults([]);
+    }
+  }, [searchTerm, performSearch]);
 
   const getFileTypeIcon = (mimeType) => {
     if (mimeType.includes('pdf')) return '📄';

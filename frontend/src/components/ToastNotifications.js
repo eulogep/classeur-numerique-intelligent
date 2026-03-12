@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './ToastNotifications.css';
 
 const ToastNotifications = () => {
   const [toasts, setToasts] = useState([]);
 
   // Fonction pour ajouter une notification
-  const addToast = (type, title, message, duration = 5000) => {
+  const addToast = useCallback((type, title, message, duration = 5000) => {
     const id = Date.now() + Math.random();
     const newToast = {
       id,
@@ -21,7 +21,7 @@ const ToastNotifications = () => {
     setTimeout(() => {
       removeToast(id);
     }, duration);
-  };
+  }, []);
 
   // Fonction pour supprimer une notification
   const removeToast = (id) => {

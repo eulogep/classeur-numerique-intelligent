@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './Dashboard.css';
 
 const Dashboard = ({ folders, documents }) => {
@@ -12,11 +12,7 @@ const Dashboard = ({ folders, documents }) => {
     growthData: []
   });
 
-  useEffect(() => {
-    calculateStats();
-  }, [folders, documents]);
-
-  const calculateStats = () => {
+  const calculateStats = useCallback(() => {
     // Calculer le nombre total de dossiers
     const countFolders = (folderObj) => {
       let count = 0;
@@ -63,7 +59,11 @@ const Dashboard = ({ folders, documents }) => {
       folderDistribution,
       growthData
     });
-  };
+  }, [folders, documents]);
+
+  useEffect(() => {
+    calculateStats();
+  }, [calculateStats]);
 
   const getFileType = (mimeType) => {
     if (mimeType.includes('pdf')) return 'PDF';
