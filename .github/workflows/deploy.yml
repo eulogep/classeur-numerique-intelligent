@@ -3,8 +3,6 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
 
 jobs:
   build-and-deploy:
@@ -22,12 +20,14 @@ jobs:
         cache-dependency-path: frontend/package-lock.json
         
     - name: Install dependencies
-      run: |
-        npm run install:all
+      working-directory: frontend
+      run: npm install
         
     - name: Build
-      run: |
-        npm run build
+      working-directory: frontend
+      run: npm run build
+      env:
+        CI: false
         
     - name: Deploy to GitHub Pages
       if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
@@ -35,4 +35,3 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./frontend/build
-        cname: euloge-mabiala.github.io 
