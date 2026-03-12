@@ -1,0 +1,317 @@
+/* Formulaire moderne avec glassmorphism */
+
+.modern-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  width: 100%;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.required {
+  color: var(--error-color);
+  font-weight: 700;
+}
+
+.form-input-wrapper {
+  position: relative;
+}
+
+.modern-input,
+.modern-select {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--background-glass);
+  backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  border-radius: var(--radius-xl);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all var(--animation-duration) var(--animation-ease);
+  box-shadow: var(--shadow-glass);
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-input::before,
+.modern-select::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(167, 139, 250, 0.05) 0%, 
+    rgba(147, 197, 253, 0.05) 50%, 
+    rgba(244, 114, 182, 0.05) 100%);
+  opacity: 0;
+  transition: opacity var(--animation-duration) var(--animation-ease);
+  pointer-events: none;
+}
+
+.modern-input:hover::before,
+.modern-select:hover::before {
+  opacity: 1;
+}
+
+.modern-input:focus,
+.modern-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 
+    var(--shadow-lg),
+    0 0 0 3px rgba(167, 139, 250, 0.1);
+  transform: translateY(-1px);
+}
+
+.modern-input:focus::before,
+.modern-select:focus::before {
+  opacity: 1;
+}
+
+.modern-input::placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.modern-input:disabled,
+.modern-select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: var(--background-tertiary);
+}
+
+/* Styles spécifiques pour le select */
+.modern-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right var(--spacing-md) center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: calc(var(--spacing-lg) + 20px);
+}
+
+.modern-select option {
+  background: var(--background-primary);
+  color: var(--text-primary);
+  padding: var(--spacing-sm);
+}
+
+/* Boutons modernes */
+.modern-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--animation-duration) var(--animation-ease);
+  border: none;
+  position: relative;
+  overflow: hidden;
+  min-height: 44px;
+}
+
+.modern-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.modern-button:hover::before {
+  left: 100%;
+}
+
+/* Variantes de boutons */
+.modern-button.primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--text-inverse);
+  box-shadow: var(--shadow-md);
+}
+
+.modern-button.primary:hover {
+  background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(167, 139, 250, 0.3);
+}
+
+.modern-button.secondary {
+  background: var(--background-glass);
+  backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-glass);
+}
+
+.modern-button.secondary:hover {
+  background: var(--background-primary);
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.modern-button.ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+}
+
+.modern-button.ghost:hover {
+  background: var(--background-secondary);
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+.modern-button.danger {
+  background: linear-gradient(135deg, var(--error-color), #dc2626);
+  color: var(--text-inverse);
+}
+
+.modern-button.danger:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* État de chargement */
+.modern-button.loading {
+  cursor: wait;
+  pointer-events: none;
+}
+
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Messages d'erreur */
+.form-error {
+  font-size: 12px;
+  color: var(--error-color);
+  margin-top: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  animation: errorSlideIn 0.3s ease;
+}
+
+@keyframes errorSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-error::before {
+  content: '⚠️';
+  font-size: 14px;
+}
+
+/* Groupes de formulaires */
+.form-group {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: flex-end;
+}
+
+.form-group .form-field {
+  flex: 1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .modern-form {
+    gap: var(--spacing-md);
+  }
+
+  .modern-input,
+  .modern-select {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 16px; /* Évite le zoom sur iOS */
+  }
+
+  .modern-button {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: 16px;
+  }
+
+  .form-group {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+}
+
+/* Mode sombre */
+@media (prefers-color-scheme: dark) {
+  .modern-input,
+  .modern-select {
+    background: var(--background-glass-dark);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .modern-button.secondary {
+    background: var(--background-glass-dark);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Animations d'apparition */
+.modern-input,
+.modern-select,
+.modern-button {
+  animation: formElementSlideIn 0.4s ease forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.modern-input:nth-child(1) { animation-delay: 0.1s; }
+.modern-input:nth-child(2) { animation-delay: 0.2s; }
+.modern-input:nth-child(3) { animation-delay: 0.3s; }
+.modern-input:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes formElementSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 

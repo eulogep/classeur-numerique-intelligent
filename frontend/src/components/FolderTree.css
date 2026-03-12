@@ -1,0 +1,291 @@
+.folder-tree {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.tree-header { display: none; }
+
+.tree-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+}
+
+/* Dossier item */
+.folder-item { display: flex; flex-direction: column; }
+
+.folder-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.12s;
+  position: relative;
+  user-select: none;
+}
+
+.folder-header:hover { background: rgba(255,255,255,0.04); }
+.folder-header.selected { background: rgba(124,92,252,0.14); }
+
+.folder-icon {
+  font-size: 14px;
+  width: 18px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.folder-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.folder-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #C4C1DC;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+.folder-header.selected .folder-name { color: #B490FF; }
+
+.folder-stats {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.document-count, .folder-size, .subfolder-count {
+  font-size: 10px;
+  color: #4A4865;
+}
+
+/* Badge count */
+.folder-doc-count {
+  font-size: 10px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 10px;
+  padding: 1px 6px;
+  color: #6E6B8A;
+  flex-shrink: 0;
+}
+
+.folder-header.selected .folder-doc-count {
+  background: rgba(124,92,252,0.2);
+  color: #B490FF;
+}
+
+/* Actions (hover) */
+.folder-actions {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.folder-action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 3px 4px;
+  border-radius: 5px;
+  opacity: 0.7;
+  transition: all 0.1s;
+}
+
+.folder-action-btn:hover {
+  background: rgba(255,255,255,0.08);
+  opacity: 1;
+}
+
+/* Sous-dossiers */
+.subfolders {
+  margin-left: 18px;
+  border-left: 1px solid rgba(255,255,255,0.06);
+  padding-left: 8px;
+  margin-top: 1px;
+  margin-bottom: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.subfolders .folder-name { font-size: 12px; color: #7A7894; }
+.subfolders .folder-header.selected .folder-name { color: #B490FF; }
+
+/* Bouton ajout */
+.add-root-folder-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #6E6B8A;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px dashed rgba(255,255,255,0.1);
+  background: none;
+  font-family: inherit;
+  transition: all 0.15s;
+  margin: 8px 0 4px;
+  width: 100%;
+  justify-content: center;
+}
+
+.add-root-folder-btn:hover {
+  border-color: rgba(124,92,252,0.4);
+  color: #B490FF;
+  background: rgba(124,92,252,0.06);
+}
+
+/* Empty state */
+.empty-folders {
+  text-align: center;
+  padding: 24px 12px;
+  color: #4A4865;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.empty-folders p:first-child { font-size: 14px; margin-bottom: 6px; }
+
+.create-first-folder-btn {
+  margin-top: 12px;
+  background: rgba(124,92,252,0.15);
+  color: #B490FF;
+  border: 1px solid rgba(124,92,252,0.25);
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.create-first-folder-btn:hover {
+  background: rgba(124,92,252,0.22);
+}
+
+/* Sidebar bottom stats */
+.sidebar-bottom-stats {
+  margin-top: auto;
+  padding: 12px 8px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.sidebar-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 0;
+  font-size: 11px;
+}
+
+.sidebar-stat-row span:first-child { color: #4A4865; }
+.sidebar-stat-row span:last-child { color: #9896B0; font-weight: 600; }
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  background: #16151C;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 24px;
+  width: 380px;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.6);
+}
+
+.modal h3 { font-size: 15px; font-weight: 700; color: #E2E0F5; margin-bottom: 16px; }
+
+.modal-content .form-group { margin-bottom: 14px; }
+
+.modal-content label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #6E6B8A;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.folder-input, .folder-select {
+  width: 100%;
+  background: #0F0F13;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 9px 12px;
+  color: #E2E0F5;
+  font-family: inherit;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.folder-input:focus, .folder-select:focus { border-color: #7C5CFC; }
+.folder-select option { background: #16151C; color: #E2E0F5; }
+
+.error-message {
+  color: #EF4444;
+  font-size: 12px;
+  background: rgba(239,68,68,0.1);
+  border-radius: 6px;
+  padding: 8px;
+  margin-bottom: 12px;
+}
+
+.modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 16px; }
+
+.cancel-btn {
+  padding: 8px 16px; border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: transparent; color: #9896B0;
+  font-size: 13px; font-weight: 600;
+  cursor: pointer; font-family: inherit; transition: all 0.15s;
+}
+.cancel-btn:hover { background: rgba(255,255,255,0.05); color: #E2E0F5; }
+
+.confirm-btn {
+  padding: 8px 16px; border-radius: 8px; border: none;
+  background: #7C5CFC; color: white;
+  font-size: 13px; font-weight: 700;
+  cursor: pointer; font-family: inherit; transition: filter 0.15s;
+}
+.confirm-btn:hover { filter: brightness(1.12); }
+
+.delete-confirm-btn {
+  padding: 8px 16px; border-radius: 8px; border: none;
+  background: #EF4444; color: white;
+  font-size: 13px; font-weight: 700;
+  cursor: pointer; font-family: inherit; transition: filter 0.15s;
+}
+.delete-confirm-btn:hover { filter: brightness(1.1); }
+
+/* Header content inside FolderTree header area */
+.folder-tree .header-content { display: none; }
+.folder-tree .header-stats { display: none; }
+.folder-tree .total-folders { display: none; }
+.folder-tree .total-documents { display: none; }
