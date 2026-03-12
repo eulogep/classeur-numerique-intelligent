@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/classeur-numerique-intelligent/static/css/main.c15ef9f8.css",
-    "main.js": "/classeur-numerique-intelligent/static/js/main.fb33db4e.js",
-    "static/js/488.0bb960fd.chunk.js": "/classeur-numerique-intelligent/static/js/488.0bb960fd.chunk.js",
-    "index.html": "/classeur-numerique-intelligent/index.html",
-    "main.c15ef9f8.css.map": "/classeur-numerique-intelligent/static/css/main.c15ef9f8.css.map",
-    "main.fb33db4e.js.map": "/classeur-numerique-intelligent/static/js/main.fb33db4e.js.map",
-    "488.0bb960fd.chunk.js.map": "/classeur-numerique-intelligent/static/js/488.0bb960fd.chunk.js.map"
+    "main.css": "./static/css/main.c15ef9f8.css",
+    "main.js": "./static/js/main.7c8bef32.js",
+    "static/js/488.0bb960fd.chunk.js": "./static/js/488.0bb960fd.chunk.js",
+    "index.html": "./index.html",
+    "main.c15ef9f8.css.map": "./static/css/main.c15ef9f8.css.map",
+    "main.7c8bef32.js.map": "./static/js/main.7c8bef32.js.map",
+    "488.0bb960fd.chunk.js.map": "./static/js/488.0bb960fd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c15ef9f8.css",
-    "static/js/main.fb33db4e.js"
+    "static/js/main.7c8bef32.js"
   ]
 }
