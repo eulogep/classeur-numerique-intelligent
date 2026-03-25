@@ -151,6 +151,7 @@ L'application est configurée pour un déploiement automatique sur GitHub Pages.
 
 **🌐 Application en ligne** : [https://euloge-mabiala.github.io/classeur-numerique-intelligent](https://euloge-mabiala.github.io/classeur-numerique-intelligent)
 
+**🌐 Application en ligne (glm5)** : https://classeur-intelligent.space.z.ai
 #### Déploiement automatique
 ```bash
 # Le déploiement se fait automatiquement à chaque push
